@@ -1,0 +1,35 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="robots" content="noindex,nofollow,noarchive">
+  <meta name="theme-color" content="#f6f7f3">
+  <meta name="description" content="Application Desk — 艺术驻留、比赛、资助申请和材料管理">
+  <title>Application Desk · 申请管理</title>
+  <link rel="stylesheet" href="./styles.css">
+</head>
+<body>
+  <header class="topbar">
+    <div class="top-inner">
+      <a class="brand" href="#all" aria-label="Application Desk 首页"><span class="brand-mark">a<span class="tiny-dot">.</span></span><span><strong>Application Desk</strong><small>ARTIST'S APPLICATION TRACKER</small></span></a>
+      <nav class="tabs" aria-label="申请分类">
+        <button data-view="all" class="active">总览</button><button data-view="residency">Residency</button><button data-view="competition">Competition</button><button data-view="funding">Funding</button><button data-view="materials">材料库</button>
+      </nav>
+      <div class="top-actions"><span id="cloudState" class="sync"><span class="status-dot"></span><span id="cloudLabel">连接中</span></span><button id="accountBtn" class="text-btn">登录</button></div>
+    </div>
+  </header>
+  <main class="container">
+    <section class="hero"><div><div class="eyebrow">YOUR CREATIVE PRACTICE, IN ONE PLACE</div><h1 id="heading">申请管理<span class="title-punctuation">.</span></h1><p id="subtitle">管理 Residency、Competition、Funding，以及每一次申请所使用的材料。</p></div><div class="hero-actions"><button class="button pale" id="importBtn">导入旧版</button><button class="button pale" id="exportBtn">导出备份</button><button class="button primary" id="newBtn">＋ 新增申请</button></div></section>
+    <section id="notice" class="notice hidden" role="status"></section>
+    <section id="stats" class="stats" aria-label="申请数据"></section>
+    <section class="workspace"><div class="section-heading"><div><h2 id="listHeading">申请记录</h2><p id="listCount" class="subline"></p></div><div class="list-tools"><div class="searchbox"><span>⌕</span><input id="searchInput" placeholder="搜索名称、机构、备注…" aria-label="搜索"></div><select id="statusFilter" aria-label="状态筛选"><option value="">全部状态</option></select><select id="sortSelect" aria-label="排序"><option value="deadline">截止日优先</option><option value="recent">最近修改</option><option value="name">名称 A–Z</option></select></div></div><div id="content" class="records"></div></section>
+    <footer class="footer"><span>Application Desk · 我的申请工作区</span><span>自动保存到云端</span></footer>
+  </main>
+  <input type="file" accept=".json,application/json" id="importFile" hidden>
+  <div id="modalRoot"></div>
+  <div id="toast" class="toast" role="status" aria-live="polite"></div>
+  
+  <script src="./config.js"></script>
+  <script type="module" src="./app.js"></script>
+</body>
+</html>
