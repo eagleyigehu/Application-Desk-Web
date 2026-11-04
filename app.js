@@ -21,6 +21,7 @@ function requireAuth(){if(!state.client){toast("请先在 config.js 配置 Supab
 async function refresh(){if(!state.user)return;try{let [a,b,c]=await Promise.all(["opportunities","materials","opportunity_materials"].map(t=>state.client.from(t).select("*")));for(const r of [a,b,c])if(r.error)throw r.error;state.opportunities=a.data;state.materials=b.data;state.links=c.data;$("#notice").classList.add("hidden");cloud("云端已同步",true);render()}catch(e){notice("数据库读取失败："+e.message);toast(e.message)}}
 function linksFor(opp){return state.links.filter(l=>l.opportunity_id===opp).map(l=>state.materials.find(m=>m.id===l.material_id)).filter(Boolean)}
 function render(){
+ $("#accountBtn").textContent=state.user?"账户":"登录";
  const mat=state.view==="materials";
  $("#heading").innerHTML=(mat?"材料库":state.view==="all"?"申请管理":categories[state.view])+'<span class="title-punctuation">.</span>';
  $("#subtitle").textContent=mat?"正文、附件、官方资料，一次上传多次复用。":"申请进度、截止日期、结果，以及每次使用的材料。";
